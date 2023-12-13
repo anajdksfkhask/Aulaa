@@ -1,8 +1,11 @@
 package com.aula.Aula.Data.Vo.v1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.io.Serializable;
 import java.util.Objects;
-
 
 public class PersonVO implements Serializable {
 
