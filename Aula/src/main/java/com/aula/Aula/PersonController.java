@@ -4,7 +4,6 @@ package com.aula.Aula;
 import com.aula.Aula.Data.Vo.v1.PersonVO;
 import com.aula.Aula.Data.Vo.v2.PersonVOv2;
 import com.aula.Aula.Model.PersonServices;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired
