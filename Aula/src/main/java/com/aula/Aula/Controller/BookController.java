@@ -1,8 +1,9 @@
 package com.aula.Aula.Controller;
 
 
+import com.aula.Aula.Data.Vo.v1.BookVo;
 import com.aula.Aula.Data.Vo.v1.PersonVO;
-import com.aula.Aula.Services.PersonServices;
+import com.aula.Aula.Services.BookServices;
 import com.aula.Aula.Util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -26,16 +27,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/person/v1")
-@Tag(name = "People", description = "AAAAAAAQQQ")
-public class PersonController {
+@Tag(name = "Book", description = "AAAAAAAQQQ")
+public class BookController {
 
     @Autowired
-    private PersonServices service;
+    private BookServices service;
 
     @GetMapping(
             produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    @Operation(summary = "Finds all People", description = "Finds all People",
-            tags = {"People"},
+    @Operation(summary = "Finds all Book", description = "Finds all Book",
+            tags = {"Book"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -50,14 +51,14 @@ public class PersonController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public List<PersonVO> findAll() {
+    public List<BookVo> findAll() {
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}",
             produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML  })
-    @Operation(summary = "Finds a Person", description = "Finds a Person",
-            tags = {"People"},
+    @Operation(summary = "Finds a Book", description = "Finds a Book",
+            tags = {"Book"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = PersonVO.class))
@@ -69,16 +70,16 @@ public class PersonController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public PersonVO findById(@PathVariable(value = "id") Long id) {
+    public BookVo findById(@PathVariable(value = "id") Long id) {
         return service.findById(id);
     }
 
     @PostMapping(
             consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML  },
             produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML  })
-    @Operation(summary = "Adds a new Person",
-            description = "Adds a new Person by passing in a JSON, XML or YML representation of the person!",
-            tags = {"People"},
+    @Operation(summary = "Adds a new Book",
+            description = "Adds a new Book by passing in a JSON, XML or YML representation of the person!",
+            tags = {"Book"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = PersonVO.class))
@@ -88,16 +89,16 @@ public class PersonController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public PersonVO create(@RequestBody PersonVO person) {
-        return service.create(person);
+    public BookVo create(@RequestBody BookVo Book) {
+        return service.create(Book);
     }
 
     @PutMapping(
             consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML  },
             produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML  })
-    @Operation(summary = "Updates a Person",
-            description = "Updates a Person by passing in a JSON, XML or YML representation of the person!",
-            tags = {"People"},
+    @Operation(summary = "Updates a Book",
+            description = "Updates a Book by passing in a JSON, XML or YML representation of the person!",
+            tags = {"Book"},
             responses = {
                     @ApiResponse(description = "Updated", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = PersonVO.class))
@@ -108,15 +109,15 @@ public class PersonController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-    public PersonVO update(@RequestBody PersonVO person) {
+    public BookVo update(@RequestBody BookVo person) {
         return service.update(person);
     }
 
 
     @DeleteMapping(value = "/{id}")
-    @Operation(summary = "Deletes a Person",
-            description = "Deletes a Person by passing in a JSON, XML or YML representation of the person!",
-            tags = {"People"},
+    @Operation(summary = "Deletes a Book",
+            description = "Deletes a Book by passing in a JSON, XML or YML representation of the person!",
+            tags = {"Book"},
             responses = {
                     @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
